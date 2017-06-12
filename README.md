@@ -8,3 +8,5 @@ add second .
 第二次提交
  
 第一次练习git bash。
+
+echo "init 0"
