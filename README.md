@@ -10,3 +10,8 @@ add second .
 第一次练习git bash。
 
 echo "init 0"
+
+git pull 。
+
+12306
+
