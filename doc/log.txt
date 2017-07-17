@@ -1,0 +1,18 @@
+---------------------------------------------
+
+手动将一个用户设置为某台机器的本地管理员。
+
+方法一：使用net 命令
+
+将客户端成功加域后，使用本地管理员Administrator登录，
+cmd 执行命令：net localgroup administrators /add domain\userName
+再次使用加域用户(userName)登录，此时userName用户已经成功设置为本地管理员
+
+缺点：此方法必须到客户端执行上述命令，或者借助execclient工具才能将域用户设置为本地管理员。
+
+方法二：计算机管理
+Win+R 打开 ，compmgmt.msc 链接到另一台计算机 ...
+
+方法三：Pstools 工具
+PsExec.exe \\test1 net localgroup Administrators "racher\jhadmin" /add  
+PsExec.exe \\test1 net localgroup Administrators "racher\jhadmin" /del
