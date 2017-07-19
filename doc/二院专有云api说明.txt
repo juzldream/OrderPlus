@@ -1,0 +1,98 @@
+1、单点登录接口
+
+	请求方式：GET
+
+	URL: http://IP:8080/appform/ssologin?code=身份证号
+
+	参数： {"code":"身份证","tokenid":""}
+	参数说明：code 为user_info表identiycard字段值，即身份证号。
+
+	返回值： {"type":0,"resultMsg":"用户不存在。"} 
+	返回值说明：type等于1为有效，type等于0为无效。
+
+
+
+2、restful api登录接口
+
+	请求方式：GET
+
+	URL:http://IP:8080/appform/ws/login?code=身份证号
+
+	参数： {"code":"身份证号"}
+	参数说明：code 为身份证号。
+
+	返回值：{"result":"success","message":null,"data":[{"token":"8D4F576AC60926EA40B0B68F0A96E73D445B5D69C7BAA46EEAE948791D7AFD8066C49C89199580BD460A381305F1F6AFE8D3E669AA2ADA5B6FF8798B95BF243FD8CF2BA47DC652DF6FD48F357EC54A730100DCC8E12C5451ED3FE4CD53B100D8"}]}
+
+	返回值说明：result 为success表示登录成功，并成功返回token值。
+
+
+
+3、修改角色接口 
+	
+	请求方式：POST
+	
+	URL:http://IP:8080/appform/ws/user/updateUserRole
+	
+	参数：{"userId":"20000004050008","roleIds":"Admin","token":""},
+	参数说明：
+			userId：为用户ID号
+			roleIds：用户角色，默认数据库存在（CommonUser、Auditor、Security、Admin）4中角色
+	
+	返回值: {"resultMsg":"子系统修改用户状态成功!","result":"1"}
+	返回值说明：result为1表示修改用户角色成功。result为0表示修改用户角色失败。
+
+
+
+4、设置用户状态接口
+
+	请求方式：POST
+	
+	URL:http://IP:8080/appform/ws/user/updateUserStatus
+	
+	参数：{"status":1,"userId":"20000004050008","token":""}
+	参数说明：
+		status 为1表示 normal；为0表示freezing
+		userId 为用户ID
+
+	返回值:{"resultMsg":"子系统修改用户状态成功!","result":"1"} 
+	返回值说明：result为1表示用户状态修改成功。result为0表示用户状态修改失败。
+
+
+
+5、用户中心同步企业注册信息
+
+	请求方式：POST
+	
+	URL:http://IP:8080/appform/ws/user/syncDep
+	
+	参数：{"sysOrgInfoId":"企业ID","name":"企业名称","type":"0","token":""}
+	参数说明：
+		sysOrgInfoId:企业ID号
+		name：企业名称
+		type：type为0表示新增或者修改企业；type为1表示删除企业
+
+
+	返回值:{"result":1,"resultMsg":"子系统同步企业成功!"}
+	返回值说明：result为1表示修改或者删除企业信息成功。result为0表示修改或者删除企业信息失败。
+
+
+
+6、用户中心同步人员注册信息
+
+	请求方式：POST
+	
+	URL:http://IP:8080/appform/ws/user/syncUser
+	
+	参数：{"id":"用户ID","name":"用户名称","identityCard":"身份证号","role":"角色"，"unitName":"单位名称"，"token":""}
+	参数说明：
+		id：用户ID
+		name：用户名称
+		identityCard：身份证号
+		role：用户角色
+		unitName：单位名称
+
+
+	返回值:{"resultMsg":"子系统同步用户成功!","result":"1"}
+	返回值说明：result为1表示注册用户信息成功。result为0表示注册用户信息失败。
+
+	注意：如果在创建用户时，后台log报用户密码复杂度不够。则需要在AD域控修改密码复杂性要求。
