@@ -1,17 +1,6 @@
-# This is a readme file.
-
-hello git!
-
-
-add second .
-
-第二次提交
- 
-第一次练习git bash。
-
-echo "init 0"
-
-git pull 。
-
-12306
+# 珍藏所在公司学习的文档
+## note 
+* doc 文档收集自己整理的文件
+* share 文档收集同事分享的文件
+* 其它杂项，暂未作规划
 
