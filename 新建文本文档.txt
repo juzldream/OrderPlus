@@ -1,9 +1,0 @@
-
-# Please read /usr/share/doc/initscripts-*/sysconfig.txt
-# for the documentation of these parameters.
-DEVICE=eth2
-BOOTPROTO=dhcp
-TYPE=Ethernet
-HWADDR=00:0c:29:cd:1a:96
-PEERDNS=yes
-~            
