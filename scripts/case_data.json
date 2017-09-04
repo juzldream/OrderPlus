@@ -1,0 +1,44 @@
+{
+    "baseUrl": [
+        {
+            "head": "http://",
+            "IP":"192.168.158.120:",
+            "port": "8080",
+            "footer": "/appform/ws/"
+        }
+    ],
+    "login": [
+        {
+            "username": "jhadmin",
+            "password": "jhadmin",
+            "expect": "1"
+        },
+        {
+            "username": "user1",
+            "password": "Letmein123",
+            "expect": "0"
+        },
+        {
+            "username": "xiao",
+            "password": "jhadmin",
+            "expect": "0"
+        },
+        {
+            "username": "jhadmin",
+            "password": "pps",
+            "expect": "0"
+        }
+    ],
+    "logout": [
+        {
+            "token": "ERADDDDDDDDDDDDDDDDDD90",
+            "expect": "1"
+        }
+    ],
+    "copyfile": [
+        {
+            "old_file": "protal_备份",
+            "expect": "1"
+        }
+    ]
+}
