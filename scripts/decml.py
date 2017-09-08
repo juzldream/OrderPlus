@@ -11,9 +11,11 @@ root = dom.documentElement
 resapi_nodes = root.getElementsByTagName('resapi')
 
 for node in resapi_nodes:
-    print node.getAttribute('no')
+    no = node.getAttribute('no')
     url = node.getElementsByTagName('url')
-    print url[0].childNodes
+    apiname = node.getElementsByTagName('apiname')
+    error = node.getElementsByTagName('error')
     print url[0].childNodes[0].nodeValue
-    #apiname = node.getElementsByTagName('apiname')
-    #print apiname[0].childNodes[0].nodeValue
+    print apiname[0].childNodes[0].nodeValue
+    print error[0].childNodes[0].nodeValue
+    print no
