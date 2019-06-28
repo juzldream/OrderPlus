@@ -266,29 +266,29 @@
 
     ```
     
-13. 各地市活跃家宽用户数
+15. 各地市活跃家宽用户数
 
     ```
-  select decode(bms_node_id,
-                891,
-                '拉萨',
-                892,
-                '日客则',
-                893,
-                '山南',
-                894,
-                '林芝',
-                895,
-                '昌都',
-                896,
-                '那曲',
-                897,
-                '阿里') AS 地市,
-         count(DISTINCT(user_name)) AS 数量
-    from usage_bppp_20190301
-   WHERE bms_product_id IN ('90007017', '90007024')
-   GROUP BY bms_node_id;
-   
+	  select decode(bms_node_id,
+			891,
+			'拉萨',
+			892,
+			'日客则',
+			893,
+			'山南',
+			894,
+			'林芝',
+			895,
+			'昌都',
+			896,
+			'那曲',
+			897,
+			'阿里') AS 地市,
+		 count(DISTINCT(user_name)) AS 数量
+	    from usage_bppp_20190301
+	   WHERE bms_product_id IN ('90007017', '90007024')
+	   GROUP BY bms_node_id;
+
     ```
 13. 各地市宽带总流量（TB)
 
@@ -335,7 +335,8 @@
     AND b.bms_subscription_status NOT IN ('2', '8','1')  /* 0 :正常 1：加锁
     AND b.bms_subscription_end_time > sysdate
     AND b.bms_user_name = c.user_name;
-```
+    ```
+    
 19. 用户解绑
 
 
