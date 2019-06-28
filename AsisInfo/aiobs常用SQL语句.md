@@ -190,34 +190,34 @@
 
     ```
     /*  各地市家宽用户数 */
-SELECT
-	decode (
-		bms_node_id,
-		891,
-		'拉萨',
-		892,
-		'日客则',
-		893,
-		'山南',
-		894,
-		'林芝',
-		895,
-		'昌都',
-		896,
-		'那曲',
-		897,
-		'阿里'
-	) AS 地市,
-	count(*) AS 数量
-FROM
-	bms_subscription_bppp
-WHERE
-	bms_svc_type = '801'
-AND bms_subscription_end_time > sysdate
-AND bms_product_id = '90007017'
-OR bms_product_id = '90007024'
-GROUP BY
-	bms_node_id ;
+	SELECT
+		decode (
+			bms_node_id,
+			891,
+			'拉萨',
+			892,
+			'日客则',
+			893,
+			'山南',
+			894,
+			'林芝',
+			895,
+			'昌都',
+			896,
+			'那曲',
+			897,
+			'阿里'
+		) AS 地市,
+		count(*) AS 数量
+	FROM
+		bms_subscription_bppp
+	WHERE
+		bms_svc_type = '801'
+	AND bms_subscription_end_time > sysdate
+	AND bms_product_id = '90007017'
+	OR bms_product_id = '90007024'
+	GROUP BY
+		bms_node_id ;
 	
 	/* 各地市IPv6用户数 */
 	SELECT
@@ -267,6 +267,7 @@ GROUP BY
     ```
     
 13. 各地市活跃家宽用户数
+
     ```
   select decode(bms_node_id,
                 891,
