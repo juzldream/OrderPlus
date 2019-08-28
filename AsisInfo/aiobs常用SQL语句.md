@@ -270,7 +270,6 @@
 
     ```
 	  select decode(bms_node_id,
-<<<<<<< HEAD
 	                891,
 	                '拉萨',
 	                892,
@@ -289,28 +288,6 @@
 	    from usage_bppp_20190301
 	   WHERE bms_product_id IN ('90007017', '90007024')
 	   GROUP BY bms_node_id;
-   
-=======
-			891,
-			'拉萨',
-			892,
-			'日客则',
-			893,
-			'山南',
-			894,
-			'林芝',
-			895,
-			'昌都',
-			896,
-			'那曲',
-			897,
-			'阿里') AS 地市,
-		 count(DISTINCT(user_name)) AS 数量
-	    from usage_bppp_20190301
-	   WHERE bms_product_id IN ('90007017', '90007024')
-	   GROUP BY bms_node_id;
-
->>>>>>> ed4ce028c7e3ed21642d5f597c66b06e8fb0d6c6
     ```
 13. 各地市宽带总流量（TB)
 
@@ -357,7 +334,6 @@
     AND b.bms_subscription_status NOT IN ('2', '8','1')  /* 0 :正常 1：加锁
     AND b.bms_subscription_end_time > sysdate
     AND b.bms_user_name = c.user_name;
-<<<<<<< HEAD
 	```
 
 20. 地市、区县、宽带账号、对应手机号码、各月上网时长、各月上网流量
@@ -376,11 +352,48 @@
 	 group by t.user_name, b.bms_node_name
 	 order by 2
 	```
+
+21. 查询2018年6月份家宽用户数
+
+	```
+	SELECT
+	  count(*)
+	FROM
+	  bms_subscription_bppp
+	WHERE
+	  bms_svc_type = '801'
+	and bms_product_id in ('90007017','90007024')
+	and bms_create_time <=to_date('20180626','yyyymmdd');
+	```	
 	
-=======
-    ```
+22. /*地市、区县、宽带账号、对应手机号码、各月上网时长、各月上网流量*/
+
+	```
+	select b.bms_user_name as 宽带账号,u.user_name as 手机号,decode(u.bms_node_id,
+              891,
+              '拉萨',
+              892,
+              '日客则',
+              893,
+              '山南',
+              894,
+              '林芝',
+              895,
+              '昌都',
+              896,
+              '那曲',
+              897,
+              '阿里') AS 地市,
+              sum(
+		output_octets / 1024 / 1024 / 1024
+		) as 上网流量
+	from usage_bppp_20190101 u ,bms_subscription_bppp b
+	where b.bms_user_name = u.user_name
+	GROUP BY
+		b.bms_user_name,
+	  u.user_name,u.bms_node_id;
+	```
     
->>>>>>> ed4ce028c7e3ed21642d5f597c66b06e8fb0d6c6
 19. 用户解绑
 
 
